@@ -1,35 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-	<!-- 메인 -->
-	<definition name="index" template="/WEB-INF/pages/index.jsp">
-		<put-attribute name="main-header" value="/WEB-INF/pages/main/main-header.jsp" />
+	   <!-- 메인 -->
+    <definition name="index" template="/WEB-INF/pages/index.jsp">
         <put-attribute name="main-topbar" value="/WEB-INF/pages/main/main-topbar.jsp" />
-		<put-attribute name="main-sidebar" value="/WEB-INF/pages/main/main-sidebar.jsp" />
-		<put-attribute name="content-wrapper" value="/WEB-INF/pages/main/main-content.jsp" />
-		<put-attribute name="main-footer" value="/WEB-INF/pages/main/main-footer.jsp" />
-		<put-attribute name="control-sidebar" value="/WEB-INF/pages/main/control-sidebar.jsp" />
-	</definition>
-	
-	<!-- 서브 : 서브페이지 -->
-	<definition name="subMain" extends="index">
-		<put-attribute name="content-wrapper" value="/WEB-INF/pages/sub/sub-content.jsp" />
-	</definition>
+        <put-attribute name="main-header" value="/WEB-INF/pages/main/main-header.jsp" />
+        <put-attribute name="main-sidebar" value="/WEB-INF/pages/main/main-sidebar.jsp" />
+        <put-attribute name="content-wrapper" value="/WEB-INF/pages/main/main-content.jsp" />
+        <put-attribute name="main-footer" value="/WEB-INF/pages/main/main-footer.jsp" />
+        <put-attribute name="control-sidebar" value="/WEB-INF/pages/main/control-sidebar.jsp" />
+    </definition>
     
-    <!-- 에러 : 에러페이지 -->
-    <definition name="error" extends="index">
-        <put-attribute name="main-header" value="/WEB-INF/pages/error/error-header.jsp" />
+    <!-- 서브 : 서브페이지 -->
+    <definition name="subMain" extends="index">
+        <put-attribute name="content-wrapper" value="/WEB-INF/pages/sub/sub-content.jsp" />
     </definition>
-    <!-- 로그인 : 로그인페이지 -->
-    <definition name="login" extends="index">
-        <put-attribute name="main-header" value="/WEB-INF/pages/login/login-header.jsp" />
+    
+    <!-- 모니터링01 : 성능모니터(CPU,MEM,DISK) -->
+    <definition name="monitorEfficiency" extends="index">
+        <put-attribute name="main-topbar" value="/WEB-INF/pages/monitor/efficiency-topbar.jsp" />
+        <put-attribute name="content-wrapper" value="/WEB-INF/pages/monitor/efficiency-content.jsp" />
     </definition>
-
-	<!-- tiles 양식 
+    
+    
+    
+    <!-- 에러00 : 에러페이지 -->
+    <definition name="error-index" template="/WEB-INF/pages/error-index.jsp">
+        <put-attribute name="error-topbar" value="/WEB-INF/pages/error/error-topbar.jsp" />
+        <put-attribute name="main-header" value="/WEB-INF/pages/main/main-header.jsp" />
+        <put-attribute name="error-wrapper" value="/WEB-INF/pages/error/error404-content.jsp" />
+        <put-attribute name="main-footer" value="/WEB-INF/pages/main/main-footer.jsp" />
+    </definition>
+    <!-- 에러01 : 404에러페이지 -->
+    <definition name="error-404" extends="error-index">
+        <put-attribute name="error-wrapper" value="/WEB-INF/pages/error/error404-content.jsp" />
+    </definition>
+    <!-- 에러02 : 500러페이지 -->
+    <definition name="error-500" extends="error-index">
+        <put-attribute name="error-wrapper" value="/WEB-INF/pages/error/error500-content.jsp" />
+    </definition>
+    
+    <!-- onepage00 : 단일페이지 -->
+    <definition name="onepage-index" template="/WEB-INF/pages/onepage-index.jsp">
+        <put-attribute name="onepage-topbar" value="/WEB-INF/pages/onepage/lockscreen-topbar.jsp" />
+        <put-attribute name="onepage-body" value="/WEB-INF/pages/onepage/lockscreen-body.jsp" />
+    </definition>
+    <!-- onepage01 : 잠금화면 -->
+    <definition name="lockscreen" extends="onepage-index">
+        <put-attribute name="onepage-topbar" value="/WEB-INF/pages/onepage/lockscreen-topbar.jsp" />
+        <put-attribute name="onepage-body" value="/WEB-INF/pages/onepage/lockscreen-body.jsp" />
+    </definition>
+    <!-- onepage02 : 로그인페이지 -->
+    <definition name="login" extends="onepage-index">
+        <put-attribute name="onepage-topbar" value="/WEB-INF/pages/onepage/login-topbar.jsp" />
+        <put-attribute name="onepage-body" value="/WEB-INF/pages/onepage/login-body.jsp" />
+    </definition>
+    <!-- onepage03 : 신규회원 가입페이지 -->
+    <definition name="register" extends="onepage-index">
+        <put-attribute name="onepage-topbar" value="/WEB-INF/pages/onepage/register-topbar.jsp" />
+        <put-attribute name="onepage-body" value="/WEB-INF/pages/onepage/register-body.jsp" />
+    </definition>
+    
+    <!-- tiles 양식 
     <definition name="*/*/*" extends="index">
         <put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp"/> 
         <put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"/> 
-		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp"/>
     </definition> -->
 
 </tiles-definitions>

@@ -3,7 +3,7 @@
     xmlns="http://java.sun.com/xml/ns/javaee"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     version="3.0">
-    <display-name>CloudManager</display-name>
+    <display-name>SQLLiteWEB</display-name>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
@@ -18,7 +18,7 @@
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/sqllite/*</url-pattern>
-        <url-pattern>/resources/*</url-pattern>
+        <url-pattern>/CMWS/*</url-pattern>
     </filter-mapping>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -41,7 +41,21 @@
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>/sqllite/*</url-pattern>
-        <url-pattern>/resources/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>rsAction</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+                /WEB-INF/config/resources-servlet.xml
+      </param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>rsAction</servlet-name>
+        <url-pattern>/resources/AdminLTE/**</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>wsAction</servlet-name>
@@ -52,7 +66,7 @@
                 /WEB-INF/config/ws-servlet.xml
       </param-value>
         </init-param>
-        <load-on-startup>2</load-on-startup>
+        <load-on-startup>3</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>wsAction</servlet-name>
@@ -61,12 +75,12 @@
     <login-config>
         <auth-method>BASIC</auth-method>
     </login-config>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/sqllite/error/code404.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/sqllite/error/code500.jsp</location>
-    </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/sqllite/error_404</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/sqllite/error_500</location>
+  </error-page>
 </web-app>

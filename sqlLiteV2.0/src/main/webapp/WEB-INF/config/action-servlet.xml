@@ -59,8 +59,8 @@
     <!-- </interceptors> -->
 
 <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-    <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-
+<!--     <mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+ -->
 <!-- Tiles ViewResolver : 페이지 호출시 실행 페이지연결담당 -->
     <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"
         p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView"

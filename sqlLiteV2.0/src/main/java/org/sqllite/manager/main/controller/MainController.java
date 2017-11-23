@@ -37,27 +37,83 @@ public class MainController {
     
     /**
      * 홈페이지로 이동한다.
-     * 메인 페이지로 이동한다.
-     * cloud/main or cloud
-     * 
+     *
      * @return
      * @throws Exception
      */
-    @RequestMapping(value={"/main"})
+    @RequestMapping(value={"/","/sqllite",""})
     public String moveMainPage() throws Exception{
-        return "index";
+        return "redirect:/sqllite/main";
     }
     
     /**
-     * 에러 페이지로 이동한다.
-     * cloud/error
+     * 신규 회원가입 페이지로 이동한다.
+     *
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value={"main"})
+    public String moveMainPage(String main) throws Exception{
+        
+//        reqService.searchSplyPrdctBizno("1058634153");
+        return "index";
+    }
+    
+    
+    /**
+     * 손님 가입 화면으로 이동한다.
      * 
      * @return
      * @throws Exception
      */
-    @RequestMapping(value={"/error"})
+    @RequestMapping(value={"register"})
+    public String moveRegisterPage() throws Exception{
+        return "register";
+    }
+    
+    /**
+     * 잠금화면으로 이동한다.
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value={"lockscreen"})
+    public String movelockscreenPage() throws Exception{
+        return "lockscreen";
+    }
+    
+    /**
+     * 에러페이지로 이동한다.
+     * 기본 페이지 404
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value={"error"})
     public String moveErrorPage() throws Exception{
-        return "error";
+        return "error-index";
+    }
+    
+    /**
+     * 404 에러페이지로 이동한다.
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value={"error_404"})
+    public String moveError404Page() throws Exception{
+        return "error-404";
+    }
+    
+    /**
+     * 500 에러페이지로 이동한다.
+     * 
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(value={"error_500"})
+    public String moveError500Page() throws Exception{
+        return "error-500";
     }
     
     
