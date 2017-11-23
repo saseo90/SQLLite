@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<!-- 메인 -->
+	<definition name="index" template="/WEB-INF/pages/index.jsp">
+		<put-attribute name="main-header" value="/WEB-INF/pages/main/main-header.jsp" />
+        <put-attribute name="main-topbar" value="/WEB-INF/pages/main/main-topbar.jsp" />
+		<put-attribute name="main-sidebar" value="/WEB-INF/pages/main/main-sidebar.jsp" />
+		<put-attribute name="content-wrapper" value="/WEB-INF/pages/main/main-content.jsp" />
+		<put-attribute name="main-footer" value="/WEB-INF/pages/main/main-footer.jsp" />
+		<put-attribute name="control-sidebar" value="/WEB-INF/pages/main/control-sidebar.jsp" />
+	</definition>
+	
+	<!-- 서브 : 서브페이지 -->
+	<definition name="subMain" extends="index">
+		<put-attribute name="content-wrapper" value="/WEB-INF/pages/sub/sub-content.jsp" />
+	</definition>
+    
+    <!-- 에러 : 에러페이지 -->
+    <definition name="error" extends="index">
+        <put-attribute name="main-header" value="/WEB-INF/pages/error/error-header.jsp" />
+    </definition>
+    <!-- 로그인 : 로그인페이지 -->
+    <definition name="login" extends="index">
+        <put-attribute name="main-header" value="/WEB-INF/pages/login/login-header.jsp" />
+    </definition>
+
+	<!-- tiles 양식 
+    <definition name="*/*/*" extends="index">
+        <put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp"/> 
+        <put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"/> 
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}/{3}.jsp"/>
+    </definition> -->
+
+</tiles-definitions>

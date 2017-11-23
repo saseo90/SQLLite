@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+    
+    <!-- 0.프로퍼티 받아오기 : 환경설정 기본정보를 globals.properties 에서 참조하도록 propertyConfigurer 설정  -->
+    <bean id="propertyConfigurer"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/org/egov/pmProps/pmProp.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- 1.datasource 설정(propertyConfigurer 활용) 
+      ID : dataSource-hsql 를 dataSource 로 인식하도록 함  
+    -->
+    <alias name="dataSource-${Globals.DbType}" alias="dataSource" />
+    <!-- <alias name="dataSource-${Globals.DbType}" alias="egov.dataSource" /> -->
+    
+    <!-- 2.DBCP2 사용 예제
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+    p:driverClassName="${db.driverClassName }"
+    p:url="${db.url}"
+    p:username="${db.username}"
+    p:password="${db.password}"
+    p:maxActive="${db.maxActive}"
+    p:maxIdle="${db.maxIdle}"
+    p:maxWait="${db.maxWait}"
+/>   
+     -->
+    
+    <!-- 2.DBC -->
+    <!-- 2.1. 임베디드 DB -->
+    <!-- 2.1.1 임베디드 DB : HSQL -->
+    <jdbc:embedded-database id="dataSource-hsql" type="HSQL">
+        <jdbc:script location="classpath:/db/cloud_Oracle11g.sql"/>
+    </jdbc:embedded-database>
+    <bean id="dataSource-hsql" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${Globals.DriverClassName}"/>
+        <property name="url" value="${Globals.Url}"/>
+        <property name="username" value="${Globals.UserName}"/>
+    </bean>
+    
+    <!-- 2.2. 서버형 DB -->
+    <!-- 2.2.1. mariadb -->
+<!--     <bean id="dataSource-mariaDB" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${MariaDb.DriverClassName}"/>
+        <property name="url" value="${MariaDb.Url}" />
+        <property name="username" value="${MariaDb.UserName}"/>
+        <property name="password" value="${MariaDb.Password}"/>
+    </bean>
+ -->
+    <!-- 2.2.2. Oracle -->
+<!--     <bean id="dataSource-oracle" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${Oracle.DriverClassName}"/>
+        <property name="url" value="${Oracle.Url}" />
+        <property name="username" value="${Oracle.UserName}"/>
+        <property name="password" value="${Oracle.Password}"/>
+    </bean> -->
+</beans>

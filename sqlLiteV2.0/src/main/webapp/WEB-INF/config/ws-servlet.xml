@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
+    xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 웹소켓 사용을 위한 설정파일 
+
+사용가능 함 수정완료 - 2017.07.28(금) 이성현
+
+-->
+
+<!-- 소켓 핸들러용 빈파일 -->
+<!-- <bean id="webalarm" class="org.commons.util.websocket.AlarmWebSocketHandler"/> -->
+
+<!-- 소켓 핸들러용 URI 맴핑과 핸들러 설정 과
+             URI 매필과 인터셉터 --> 
+<!-- <websocket:handlers>
+    <websocket:mapping path="/CMWS/echo/alarm" handler="webalarm"/>
+    <websocket:handshake-handler ref="handshakeHandler"/>
+    <websocket:handshake-interceptors>
+         <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+    </websocket:handshake-interceptors>
+</websocket:handlers> -->
+
+<!-- 소켓의 헨들러(전략 반영) -->
+<!-- <bean id="handshakeHandler" class="org.springframework.web.socket.server.support.DefaultHandshakeHandler">
+    <constructor-arg ref="upgradeStrategy"/>
+</bean> -->
+
+<!-- 소켓 전략 : 톰켓 사용 -->
+<!-- <bean id="upgradeStrategy" class="org.springframework.web.socket.server.standard.TomcatRequestUpgradeStrategy" /> --> 
+<!-- 소켓용 톰켓의 설정정보 : 단위  밀리초 ms : 60000(1분) ,3600000(1시간) ,7200000(2시간) ,21600000(6시간) -->
+<!-- <bean class="org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean"
+ p:maxSessionIdleTimeout="7200000"
+ p:maxTextMessageBufferSize="1048576"/> -->
+
+</beans>
