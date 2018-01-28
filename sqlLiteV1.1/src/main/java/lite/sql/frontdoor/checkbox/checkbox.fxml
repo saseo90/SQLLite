@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="440.0" prefWidth="495.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lite.sql.frontdoor.checkbox.CheckboxController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="357.0" prefWidth="495.0" spacing="15.0">
+         <children>
+            <TableView fx:id="table" prefHeight="349.0" prefWidth="462.0">
+              <columns>
+                <TableColumn fx:id="checkBox" prefWidth="24.0" />
+                <TableColumn fx:id="tableName" minWidth="4.0" prefWidth="321.0" text="Name" />
+              </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="82.0" prefWidth="495.0" spacing="15.0">
+         <children>
+            <Button fx:id="btnExcel" mnemonicParsing="false" prefHeight="45.0" prefWidth="79.0" text="엑셀" />
+            <Button fx:id="btnText" mnemonicParsing="false" prefHeight="45.0" prefWidth="79.0" text="텍스트" />
+            <Button fx:id="btnNonono" mnemonicParsing="false" prefHeight="45.0" prefWidth="79.0" text="취소" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

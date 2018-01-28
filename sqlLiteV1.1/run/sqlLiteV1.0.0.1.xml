@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\LEESH\Downloads\sqlLiteV1.0.jar</jar>
+  <outfile>C:\Users\LEESH\Downloads\sqlListV1.0.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <classPath>
+    <mainClass>lite.sql.frontdoor.loginPage.LoginMain</mainClass>
+    <cp>.</cp>
+    <cp>sqlLiteV1.0_lib/poi-ooxml-3.14.jar</cp>
+    <cp>sqlLiteV1.0_lib/poi-3.14.jar</cp>
+    <cp>sqlLiteV1.0_lib/commons-codec-1.10.jar</cp>
+    <cp>sqlLiteV1.0_lib/poi-ooxml-schemas-3.14.jar</cp>
+    <cp>sqlLiteV1.0_lib/xmlbeans-2.6.0.jar</cp>
+    <cp>sqlLiteV1.0_lib/stax-api-1.0.1.jar</cp>
+    <cp>sqlLiteV1.0_lib/curvesapi-1.03.jar</cp>
+    <cp>sqlLiteV1.0_lib/slf4j-api-1.6.1.jar</cp>
+    <cp>sqlLiteV1.0_lib/jcl-over-slf4j-1.6.1.jar</cp>
+    <cp>sqlLiteV1.0_lib/slf4j-log4j12-1.6.1.jar</cp>
+    <cp>sqlLiteV1.0_lib/log4j-1.2.16.jar</cp>
+  </classPath>
+  <jre>
+    <path>jdk1.8</path>
+    <bundledJre64Bit>true</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion>1.8.0_101</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.1</fileVersion>
+    <txtFileVersion>Ver 1.0</txtFileVersion>
+    <fileDescription>SQLLite</fileDescription>
+    <copyright>Lee SeongHyun</copyright>
+    <productVersion>1.0.0.1</productVersion>
+    <txtProductVersion>Ver 1.0</txtProductVersion>
+    <productName>SQLLite V1.0</productName>
+    <companyName>sosoHappy-Team</companyName>
+    <internalName>SQLLite</internalName>
+    <originalFilename>SQLLiteV1.0.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_UK</language>
+  </versionInfo>
+</launch4jConfig>

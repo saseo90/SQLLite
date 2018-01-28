@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="workPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lite.sql.frontdoor.main.MainPanController">
+   <bottom>
+      <VBox fx:id="downVbox" alignment="TOP_CENTER" maxHeight="40.0" maxWidth="1440.0" minHeight="40.0" minWidth="1440.0" prefHeight="40.0" prefWidth="1440.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <children>
+            <Separator maxHeight="2.0" maxWidth="1430.0" minHeight="2.0" minWidth="1430.0" prefHeight="2.0" prefWidth="1430.0" />
+            <Label fx:id="downLabelMessage" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="394.0" text="Copyright 2016 . 쏘쏘해피 all rights reserved." />
+            <Separator maxHeight="2.0" maxWidth="1430.0" minHeight="2.0" minWidth="1430.0" prefHeight="2.0" prefWidth="1430.0" />
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <VBox fx:id="contentVbox" BorderPane.alignment="TOP_LEFT">
+         <children>
+            <TabPane fx:id="contentTabpaneUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefWidth="875.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <tabs>
+                  <Tab fx:id="tabBase" closable="false" text="사용설명서">
+                     <content>
+                        <TextArea editable="false" text="사용설명서&#10;&#10;단축키 (현재 실행되는 )&#10;&#10;new(새 쿼리문 입력창 열기)-&gt;Ctrl+N&#10;open(파일 불러오기) -&gt;Ctrl+O&#10;save (파일 저장하기)-&gt;Ctrl+S&#10;&#10;&#10;전체스크립트 실행 -&gt; Ctrl+Alt+Enter&#10;마지막 줄 스크립트 실행-&gt; Ctrl+Enter&#10;&#10;select문-&gt;Alt+S&#10;update문-&gt;Alt+U&#10;insert문-&gt;Alt+I&#10;delete문-&gt;Alt+D&#10;alter문-&gt; Alt+A&#10;create문-&gt;Alt+C&#10;drop문-&gt;Alt+R ">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </TextArea>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tabQuery" closable="false" text="쿼리문작성.SQL">
+                     <content>
+                        <VBox fx:id="tabA2">
+                           <children>
+                              <TextArea fx:id="textareaQuery" prefHeight="374.0" prefWidth="875.0">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </TextArea>
+                              <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                <items>
+                                  <Button fx:id="btnSelTxt" mnemonicParsing="false" text="Select" />
+                                    <Button fx:id="btnUpdateTxt" mnemonicParsing="false" text="Update" />
+                                    <Button fx:id="btnInsTxt" mnemonicParsing="false" text="Insert" />
+                                    <Button fx:id="btnDelTxt" mnemonicParsing="false" text="Delete" />
+                                    <Button fx:id="btnAltTxt" mnemonicParsing="false" text="Alter" />
+                                    <Button fx:id="btnCreTxt" mnemonicParsing="false" text="Create" />
+                                    <Button fx:id="btnDropTxt" mnemonicParsing="false" text="Drop" />
+                                </items>
+                              </ToolBar>
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tabData" closable="false" text="[#테이블이름#]의 데이터">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="25.0" prefWidth="875.0">
+                                 <children>
+                                    <ToolBar prefHeight="33.0" prefWidth="877.0">
+                                      <items>
+                                        <Button fx:id="btnSaveAccel" mnemonicParsing="false" text="엑셀저장" />
+                                          <Button fx:id="btnSaveSql" mnemonicParsing="false" text="SQL문저장" />
+                                       </items>
+                                    </ToolBar>
+                                 </children>
+                              </HBox>
+                              <TableView fx:id="tableData" prefHeight="414.0" prefWidth="875.0" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+               </tabs>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TabPane>
+            <ToolBar fx:id="contentToolbarWork" maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+              <items>
+                <Button fx:id="btnRun" mnemonicParsing="false" text="스크립트 실행" />
+                  <Button fx:id="btnRunAll" mnemonicParsing="false" text="전체 스크립트 실행" />
+                  <Button fx:id="btnOpeneRepairContentsheet" mnemonicParsing="false" text="작업창높이변경" />
+                  <TextFlow prefHeight="200.0" prefWidth="200.0" />
+              </items>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </ToolBar>
+            <TabPane fx:id="contentTabpaneDown" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="874.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab fx:id="tabReportSelect" text="질의실행결과">
+                     <content>
+                        <TableView fx:id="tableReportSelect" prefHeight="200.0" prefWidth="200.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="2.0" />
+                           </padding>
+                        </TableView>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tabReportErrorScript" text="스크립트 결과 및 오류보고">
+                     <content>
+                        <TextArea fx:id="textareaReportErrorScript">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </TextArea>
+                     </content>
+                  </Tab>
+                  <Tab fx:id="tabRepairData" text="데이터 변경">
+                     <content>
+                        <VBox alignment="TOP_RIGHT">
+                           <children>
+                              <ScrollPane prefHeight="176.0" prefWidth="875.0">
+                                <content>
+                                  <AnchorPane fx:id="scrollerRepairData" prefHeight="26.0" prefWidth="865.0">
+                                       <children>
+                                          <FlowPane fx:id="flowerRepairData" layoutX="11.0" prefHeight="15.0" prefWidth="854.0">
+                                             <padding>
+                                                <Insets bottom="10.0" left="15.0" right="15.0" top="5.0" />
+                                             </padding>
+                                          </FlowPane>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </ScrollPane>
+                              <Button fx:id="btnRepairData" mnemonicParsing="false" text="데이터변경" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </Tab>
+               </tabs>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </VBox.margin>
+            </TabPane>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets right="15.0" />
+         </padding>
+      </VBox>
+   </center>
+   <top>
+      <VBox fx:id="upVbox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="1440.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Separator maxHeight="3.0" maxWidth="1430.0" minHeight="3.0" minWidth="1430.0" prefHeight="3.0" prefWidth="1430.0" />
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0">
+               <children>
+                  <ToolBar fx:id="upToolbarMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="1415.0">
+                     <items>
+                        <Button fx:id="btnNew" mnemonicParsing="false" text="NEW" />
+                        <Button fx:id="btnOpen" mnemonicParsing="false" text="OPEN" />
+                        <Button fx:id="btnSave" mnemonicParsing="false" text="SAVE" />
+                        <Button fx:id="btnNonAceess" mnemonicParsing="false" onAction="#handleButtonAction" text="접속해제" />
+                        <Button fx:id="btnTexCel" mnemonicParsing="false" text="EXPORT" />
+                        <Button fx:id="btnImport" mnemonicParsing="false" text="IMPORT" />
+                        <Button fx:id="btnHelp" mnemonicParsing="false" text="Help " />
+                        <Button fx:id="btnManageSesi" mnemonicParsing="false" onAction="#handleButtonAction" text="세션관리" />
+                        <Button fx:id="btnEpilogue" mnemonicParsing="false" text="에필로그" translateX="860.0" />
+                     </items>
+                  </ToolBar>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </HBox>
+            <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3.0" prefWidth="1430.0" />
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="503.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <children>
+                  <TextField fx:id="textfieldAccessUseId" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="94.0" text="접속ID">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="textfieldAccessUseIp" disable="true" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="210.0" text="접속IP" />
+                  <TextField fx:id="textfieldAccessDriver" disable="true" prefHeight="23.0" prefWidth="117.0" text="접속드라이버" />
+               </children>
+            </HBox>
+            <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3.0" prefWidth="1430.0" />
+         </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </top>
+   <left>
+      <HBox fx:id="sideHbox" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" BorderPane.alignment="TOP_LEFT">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+         <children>
+            <VBox fx:id="LeftVbox" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0">
+               <children>
+                  <ToolBar fx:id="sideToolbarMenu" maxHeight="40.0" minHeight="40.0" minWidth="-Infinity" prefHeight="40.0">
+                     <items>
+                        <Button fx:id="btnSelectTables" mnemonicParsing="false" text="테이블목록 초기화" />
+                     </items>
+                  </ToolBar>
+                  <VBox prefHeight="245.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <StackPane fx:id="paneStack" alignment="TOP_LEFT" prefHeight="256.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="245.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label fx:id="sideLabelTableName" prefHeight="15.0" />
+                        <TableView fx:id="sideTableColumns">
+                          <columns>
+                            <TableColumn fx:id="sideColColumnName" prefWidth="99.0" text="COLUMN_NAME" />
+                            <TableColumn fx:id="sideColDateType" prefWidth="74.0" text="DATE_TYPE" />
+                              <TableColumn fx:id="sideColNullable" prefWidth="74.0" text="NULLABLE" />
+                              <TableColumn fx:id="sideColDateDefault" prefWidth="99.0" text="DATE_DEFAULT" />
+                              <TableColumn fx:id="sideColColumnId" prefWidth="78.0" text="COLUMN_ID" />
+                              <TableColumn fx:id="sideColComments" prefWidth="85.0" text="COMMENTS" />
+                          </columns>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </TableView>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0">
+                     <children>
+                        <Label fx:id="sidLabelAppendCol" prefHeight="15.0" prefWidth="218.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="sidTextFieldColName" prefHeight="50.0" prefWidth="120.0" text="컬럼명" />
+                              <ComboBox fx:id="sidComboDateType" prefHeight="50.0" prefWidth="120.0" promptText="데이터타입">
+                                 <HBox.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <TextField fx:id="sidTextFieldDefault" prefHeight="50.0" prefWidth="120.0" promptText="Default" />
+                              <Button fx:id="btnAppendCol" mnemonicParsing="false" prefHeight="46.0" prefWidth="74.0" text="등록">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="136.0" prefWidth="521.0" spacing="20.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <Separator halignment="RIGHT" maxHeight="730.0" maxWidth="6.0" minHeight="730.0" minWidth="6.0" orientation="VERTICAL" prefHeight="730.0" prefWidth="6.0" />
+         </children>
+      </HBox>
+   </left>
+   <right>
+      <Pane fx:id="panBacgraound" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" visible="false" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="780.0" layoutY="329.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: aqua;">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="150.0">
+                           <children>
+                              <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="200.0">
+                                <items>
+                                    <CheckBox fx:id="chekBaseContentsheet" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" selected="true" text="기본값(4:2)" />
+                                    <Button fx:id="btnCloseRepairContentsheet" mnemonicParsing="false" prefHeight="17.0" prefWidth="51.0" text="닫기" />
+                                </items>
+                              </ToolBar>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="150.0">
+                           <children>
+                              <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="126.0" prefWidth="120.0">
+                                 <children>
+                                    <ScrollBar fx:id="scrollContentsheet" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="100.0" prefWidth="30.0" />
+                                    <ScrollBar fx:id="scrollWidth" disable="true" prefHeight="30.0" prefWidth="120.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

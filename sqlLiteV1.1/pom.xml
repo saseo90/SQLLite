@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>lite.sql</groupId>
+  <artifactId>oracle-mysql</artifactId>
+  <description>요상한 디벨로퍼 v1.0. 은 sosoHappy-team 이 제작한 프로젝트로서 오라클, mysql을 지원하는 간편한 디벨로퍼 다. ㅉ빠른 DDL 생성 및 javaFX 룰 활용한 간편한 UI 지원이 특징이다.</description>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+  <name>sqlLiteV1.0</name>
+  <url>https://github.com/saseo90/sqlLite</url>
+  
+  <organization>
+      <name>sosoHappy-team</name>
+  </organization>
+    
+  <properties>
+    <java.version>1.8</java.version>
+    <javafx.version>2.2</javafx.version>
+    <slf4j.version>1.6.1</slf4j.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <mainClass.location>lite.sql.frontdoor.loginPage.LoginMain</mainClass.location>
+  </properties>
+
+
+<repositories>
+<repository>
+            <id>sonatype-nexus</id>
+            <name>Sonatype Nexus Snapshots</name>
+<url>https://oss.sonatype.org/content/repositories/releases/</url>
+</repository>
+</repositories>
+
+  <dependencies>
+    <!-- POI : poi-ooxml -->
+    <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>3.14</version>
+    </dependency>
+    <!-- Oracle DB connector -->
+    <dependency>
+        <groupId>com.github.noraui</groupId>
+        <artifactId>ojdbc7</artifactId>
+        <version>12.1.0.2</version>
+    </dependency>
+
+    <!-- Logging  -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>jcl-over-slf4j</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.16</version>
+    </dependency>
+    
+    <!-- test : junit  -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+</project>
