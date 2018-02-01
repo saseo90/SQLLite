@@ -378,25 +378,15 @@ public class EasyXMLUtil {
                     ++modeCount;
                 }
             }
-            if(flag){
+            if(flag){//수정이 없을 경우 추가한다.
                 beforeVO.add(defaultLoginVo);
             }
-//            System.out.println("전채:"+beforeVO.toString());
             Document doc = getInstance();
             String resultCode ="00";
             String resultMsg  ="메시지";
             String totalCount ="0";
             Element response = doc.createElement("response");
             Element result = createSaveBodyDefault(doc, beforeVO);
-//            Map<String, Object> result = createSaveBodyDefault(doc, beforeVO);
-//            int modeCount =  (int) result.get("modeCount");
-//            Element body = (Element) result.get("body"); 
-//            totalCount =""+(body.getElementsByTagName("UserInfo").getLength());
-//            Element header = createHeader(doc, resultCode,resultMsg,totalCount);
-//            response.appendChild(header);
-//            response.appendChild(body);
-//            craetXmlDoc(response);
-//            return modeCount;
             totalCount=""+modeCount;
             Element header = createHeader(doc, resultCode,resultMsg,totalCount);
             response.appendChild(header);

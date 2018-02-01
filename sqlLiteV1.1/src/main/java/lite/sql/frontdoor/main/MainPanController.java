@@ -55,6 +55,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -430,7 +431,7 @@ public class MainPanController implements Initializable {
 		Parent root;
 		Scene scene;
 		try {
-			root = loader.load();
+			root = (Parent) loader.load();
 			scene = new Scene(root);
 			stage.setScene(scene);
 		} catch (Exception e) {
@@ -534,7 +535,7 @@ public class MainPanController implements Initializable {
 		Parent root;
 		Scene scene;
 		try {
-			root = loader.load();
+			root = (Parent) loader.load();
 			scene = new Scene(root);
 			stage.setScene(scene);
 		} catch (Exception e) {
@@ -830,7 +831,7 @@ public class MainPanController implements Initializable {
 			Parent root;
 			Scene scene;
 			try {
-				root = loader.load();
+				root = (Parent) loader.load();
 				scene = new Scene(root);
 				stage.setScene(scene);
 			} catch (Exception e) {
@@ -959,7 +960,7 @@ public class MainPanController implements Initializable {
 		tab.setContent(vb);
 		vb.getChildren().add(ta);
 		vb.getChildren().add(tb);
-		ta.setPadding(new Insets(10));
+		//((Region) ta).setPadding(new Insets(10));
 		ta.setPrefSize(875, 375);
 		tb.setPrefSize(200, 40);
 		
@@ -1053,7 +1054,7 @@ public class MainPanController implements Initializable {
 		Parent root;
 		Scene scene;
 		try {
-			root = loader.load();
+			root = (Parent) loader.load();
 			scene = new Scene(root);
 			stage.setScene(scene);
 		} catch (Exception e) {
@@ -1200,7 +1201,7 @@ public class MainPanController implements Initializable {
 			// 0.2HBOX 크기지정
 			newHbox.setPrefSize(210, 40);// 너비,높이
 			newHbox.setSpacing(2);// 내부 객체간 수평간격
-			newLabel.setCenterShape(true);
+			//newLabel.setCenterShape(true);
 			newLabel.setPrefSize(100, 40);
 			newTextField.setPrefSize(100, 40);
 			// 1.데이터 입력 ,아이디부여 ,컬럼이름부여

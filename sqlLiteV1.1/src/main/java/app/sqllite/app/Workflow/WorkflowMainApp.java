@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application{
+public class WorkflowMainApp extends Application{
 
     public static void main(String[] args) {
         launch(args);
     }
-    private MainController buildController(Stage stage) {
-        return new MainController(stage);
+    private WorkflowController buildController(Stage stage) {
+        return new WorkflowController(stage);
     }
     @Override
     public void start(Stage stage) throws Exception {
@@ -22,7 +22,7 @@ public class Main extends Application{
 //       Scene scene = new Scene(root);
         
 //       FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/Main.fxml"));
-       FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/Main.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/Workflow.fxml"));
        loader.setControllerFactory(t -> buildController(stage));
        stage.setTitle("작업영역");//윈도우창의 제목설정\
        stage.setScene(new Scene((Parent) loader.load()));

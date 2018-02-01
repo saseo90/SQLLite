@@ -166,18 +166,18 @@ public class CopyRightController implements Initializable{
 		tx11.setPrefWidth(600);
 		tx12.setPrefWidth(600);
 		
-		tx1.setFont(Font.font("Serif", 20));
-		tx2.setFont(Font.font("Serif", 20));
-		tx3.setFont(Font.font("Serif", 20));
-		tx4.setFont(Font.font("Serif", 20));
-		tx5.setFont(Font.font("Serif", 20));
-		tx6.setFont(Font.font("Serif", 20));
-		tx7.setFont(Font.font("Serif", 20));
-		tx8.setFont(Font.font("Serif", 20));
-		tx9.setFont(Font.font("Serif", 20));
-		tx10.setFont(Font.font("Serif", 20));
-		tx11.setFont(Font.font("Serif", 20));
-		tx12.setFont(Font.font("Serif", 20));
+//		tx1.setFont(Font.font("Serif", 20));
+//		tx2.setFont(Font.font("Serif", 20));
+//		tx3.setFont(Font.font("Serif", 20));
+//		tx4.setFont(Font.font("Serif", 20));
+//		tx5.setFont(Font.font("Serif", 20));
+//		tx6.setFont(Font.font("Serif", 20));
+//		tx7.setFont(Font.font("Serif", 20));
+//		tx8.setFont(Font.font("Serif", 20));
+//		tx9.setFont(Font.font("Serif", 20));
+//		tx10.setFont(Font.font("Serif", 20));
+//		tx11.setFont(Font.font("Serif", 20));
+//		tx12.setFont(Font.font("Serif", 20));
 		
 		tx1.setWrapText(true);
 		tx2.setWrapText(true);
@@ -192,7 +192,7 @@ public class CopyRightController implements Initializable{
 		tx11.setWrapText(true);
 		tx12.setWrapText(true);
 		
-		tx1.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY ) ) );
+		//tx1.setBackground(new Background(new BackgroundFill(Color.GRAY, CornerRadii.EMPTY, Insets.EMPTY ) ) );
 		
 		
 		tx1.setText("프로젝트를 수행하면서 수업에서 배울 수 있었던 내용을 활용해보기도 하고, 그 외적인 내용도 찾아볼 수 있어 좋은 경험이었습니다."

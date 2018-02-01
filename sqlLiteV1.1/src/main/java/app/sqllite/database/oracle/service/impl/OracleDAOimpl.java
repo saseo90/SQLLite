@@ -41,27 +41,26 @@ public class OracleDAOimpl implements OracleDAO {
         connection = DriverManager.getConnection(oraVO.getDriverUrl());
 //        connection = DriverManager.getConnection("jdbc:derby:books.db;create=true");
     }
-
-    public Connection connectTest(String driverURL, String accessId, String pwd) throws Exception {
+    @Override
+    public void connectTest(String driverURL, String accessId, String pwd) throws Exception {
         OracleVO oraVO = new OracleVO();
         Class.forName(oraVO.getDriverName());
         connection = DriverManager.getConnection(driverURL, accessId, pwd);
 //        statement = connection.createStatement();
-        return connection;
+//        return connection;
   }
     
     @Override
     public Connection connect(String driverURL, String accessId, String pwd) throws Exception {
         OracleVO oraVO = new OracleVO();
         Class.forName(oraVO.getDriverName());
-         connection = DriverManager.getConnection(driverURL, accessId, pwd);
-         return connection;
+        connection = DriverManager.getConnection(driverURL, accessId, pwd);
+        return connection;
 //        statement = connection.createStatement();
 //        Connect.connection = connection;
 //        System.out.println("success!");
     }
     
-
     @Override
     public void close() throws Exception {
         connection.close();

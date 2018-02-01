@@ -1,11 +1,11 @@
 package app.sqllite.app.main;
 
-import app.sqllite.app.Workflow.MainController;
+import app.sqllite.app.Workflow.WorkflowController;
 import javafx.stage.Stage;
 
 public class SubIndext {
 
-    public MainController buildController(Stage stage) {
-        return new MainController(stage);
+    public WorkflowController buildController(Stage stage) {
+        return new WorkflowController(stage);
     }
 }

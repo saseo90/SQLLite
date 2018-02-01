@@ -19,7 +19,7 @@ public class HelpboxLunch extends Application {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(
 				"/lite/sql/utility/help/helpbox.fxml"));
 
-		Parent root = loader.load();
+		Parent root = (Parent) loader.load();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setResizable(false);

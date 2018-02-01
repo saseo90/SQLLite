@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.cmm.utility.impl.DefaultLoginVo;
 import com.cmm.utility.impl.SessionVO;
 
+import app.sqllite.app.login.service.LoginService;
 import app.sqllite.app.login.service.impl.LoginServiceImpl;
 import app.sqllite.app.main.SubIndext;
 import app.sqllite.database.msssql.service.impl.MsSQLVO;
@@ -63,7 +64,7 @@ import lite.sql.frontdoor.loginPage.loginList.LoginUser;
 public class LoginController {
     private static Logger log = LoggerFactory.getLogger(LoginController.class);
     
-    private LoginServiceImpl loginService = new LoginServiceImpl();
+    private LoginService loginService = new LoginServiceImpl();
 
     public LoginController(Stage stage) {
         //stage.setOnCloseRequest(e -> model.close());
@@ -157,16 +158,20 @@ public class LoginController {
 	 */
 	private void connect(Event event) {
           String result = "";
-          result = loginService.connection(getDefaultLoginVO());
+          DefaultLoginVo connVO = getDefaultLoginVO();
+          connVO.setUserId("admin");
+          connVO.setUserPw("1234");
+          connVO.setUsrType("admin");
+          result = loginService.connection(connVO);
         if (result.contains("[접속성공]")) {
            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/Main.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/Workflow.fxml"));
                 SubIndext si = new SubIndext();
                 loader.setControllerFactory(t -> si.buildController(null));
-                Parent parent = loader.load();
+                Parent parent = (Parent) loader.load();
                 Scene scene = new Scene(parent);
                 Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                app_stage.hide(); // optional
+                app_stage.hide();//현재 이벤트 를 실행중인 노드를 숨기고 화면을 전환하여 다시 출력한다.
                 app_stage.setScene(scene);
                 app_stage.show();
                 logLblLogin.setText(result);
@@ -188,7 +193,8 @@ public class LoginController {
 	 * 접속테스트
 	 */
 	private void conntest() {
-		String result = loginService.connection(getDefaultLoginVO());
+	    DefaultLoginVo conntVO = getDefaultLoginVO();
+		String result = loginService.connectTest(conntVO);
 		logLblLogin.setText(result);
 	}
 //	------------- 빠른 사용자 기능------------------------

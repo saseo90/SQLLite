@@ -61,7 +61,7 @@ import lite.sql.backdoor.dao.DatabaseDao;
  * (1430,190)(TAP_PANE) MIN(1430,190) MAX(1430,480) 최대화 했을 때 여유를 20으로 정함.
  * (1420,160)(TEXTAREA) MIN(1420,160) MAX(1420, PRE)
  */
-public class MainPanController {
+public class WorkflowPanController {
 	// 디자인 - 컨테이너 영역
 	@FXML
 	private BorderPane workPane;

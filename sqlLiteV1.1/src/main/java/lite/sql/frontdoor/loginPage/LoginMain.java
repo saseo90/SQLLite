@@ -17,7 +17,7 @@ public class LoginMain extends Application {
 					getClass().getResource("/lite/sql/frontdoor/loginPage/login.fxml")
 				);
 		//javafx.scene.Parent
-		Parent root = loader.load();
+		Parent root = (Parent) loader.load();
 		//javafx.scene.Scene
 		Scene scene = new Scene(root);
 		stage.setResizable(false);

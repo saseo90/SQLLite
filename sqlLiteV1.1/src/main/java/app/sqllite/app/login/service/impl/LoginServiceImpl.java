@@ -54,7 +54,7 @@ public class LoginServiceImpl implements LoginService{
             oraVO.setAccessPort(objVO.getAccessPort());
             oraVO.setAccessSID(objVO.getAccessSID());
             try {
-                 oraDAO.connect(oraVO.getDriverUrl(),objVO.getAccessId(), objVO.getAccessPw());
+                oraDAO.connectTest(oraVO.getDriverUrl(),objVO.getAccessId(), objVO.getAccessPw());
             } catch (Exception e) {
                  e.printStackTrace();
                  resultMSG="[접속실패]"+e.getMessage();
@@ -82,15 +82,14 @@ public class LoginServiceImpl implements LoginService{
                 Connection connection = oraDAO.connect(oraVO.getDriverUrl(),objVO.getAccessId(), objVO.getAccessPw());
                 SessionVO sessionVO = new SessionVO();
                 sessionVO.setRowNum(SessionUtil.getUserRowNum());
-                sessionVO.setUserId(oraVO.getAccessId());
-                sessionVO.setUserPw(oraVO.getAccessPw());
-                sessionVO.setUsrType("관리자");//관리자,담당자,사용자
+                sessionVO.setUserId(objVO.getUserId());
+                sessionVO.setUserPw(objVO.getUserPw());
+                sessionVO.setUsrType(objVO.getUsrType());//관리자,담당자,사용자
                 oraVO.setDbEnum(SessionUtil.getUserDBEnum());
                 oraVO.setConnection(connection);
                 sessionVO.setDbObjListAdd(oraVO);
                 
-//                SessionUtil sessionUtil = new SessionUtil();
-                SessionUtil.afterConnectionAddSession(sessionVO);
+                SessionUtil.connectionAdd(sessionVO);
            } catch (Exception e) {
                 e.printStackTrace();
                 resultMSG="[접속실패]"+e.getMessage();
@@ -104,8 +103,6 @@ public class LoginServiceImpl implements LoginService{
         EasyXMLUtil eXMLUtil = new EasyXMLUtil();
         try {
             return eXMLUtil.readDefaultUserALL();
-//            List<SessionVO> temp = eXMLUtil.readUserALL();
-//            return ComvertUtil.comvertFormater(temp);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -198,14 +195,5 @@ public class LoginServiceImpl implements LoginService{
             return "[삭제실패]파일저장 기본경로에 문제가 있습니다.";
         }
         return "[삭제성공]"+delCount+" 건 삭제.";
-//        EasyXMLUtil eXMLUtil = new EasyXMLUtil();
-//        try {
-//            return eXMLUtil.readDefaultUserALL();
-////            List<SessionVO> temp = eXMLUtil.readUserALL();
-////            return ComvertUtil.comvertFormater(temp);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return new ArrayList<DefaultLoginVo>();
     }
 }

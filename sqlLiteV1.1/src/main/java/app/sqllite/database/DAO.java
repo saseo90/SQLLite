@@ -21,6 +21,15 @@ import java.sql.Connection;
 public interface DAO {
     /** 접속준비 */
     public void setup() throws Exception;
+    /**
+     * 접속테스트
+     * @param driverURL
+     * @param accessId
+     * @param pwd
+     * @return
+     * @throws Exception
+     */
+    public void connectTest(String driverURL, String accessId, String pwd) throws Exception;
     /** 접속
      * @param driverURL
      * @param accessId

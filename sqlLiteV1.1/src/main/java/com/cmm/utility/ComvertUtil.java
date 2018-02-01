@@ -42,7 +42,7 @@ public class ComvertUtil {
         } catch (NumberFormatException e) {
             return false;
         }
-      }
+    }
     
     /**
      * 세션 VO 객체를  화면에 출력한 VO 로 변환한다.

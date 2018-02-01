@@ -18,7 +18,7 @@ public class MainController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/lite/sql/frontdoor/main/MainPane.fxml"));
         Parent parent = null;        
         try {
-            parent = loader.load();
+            parent = (Parent) loader.load();
         } catch (Exception e) {
             System.out.println("로그");
         	System.out.println(e.getMessage());

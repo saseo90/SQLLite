@@ -1,12 +1,17 @@
 package com.cmm.utility;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cmm.utility.impl.SessionVO;
+
+import app.sqllite.database.msssql.service.impl.MsSQLVO;
+import app.sqllite.database.mysql.service.impl.MySQLVO;
+import app.sqllite.database.oracle.service.impl.OracleVO;
 
 /**
  * 
@@ -33,6 +38,7 @@ public class SessionUtil {
     
     /**
      * 유저고유번호생성
+     * --빠른사용자정보 생성, 접속성공 시 사용한다.
      * @return
      */
     public static String getUserRowNum() {
@@ -60,15 +66,17 @@ public class SessionUtil {
      * @param sessionVO
      * @throws Exception
      */
-    public static void afterConnectionAddSession(SessionVO sessionVO) throws Exception{
+    public static void connectionAdd(SessionVO sessionVO) throws Exception{
         Boolean flag = true;
         for (SessionVO user : users) {//기존 정보에 DB 정보 추가
-            if(user.getUserId().equals(sessionVO.getUserId())){
+            if(user.getRowNum().equals(sessionVO.getRowNum())){
+                user.setUserId(sessionVO.getUserId());
                 user.setUserPw(sessionVO.getUserPw());
                 user.setUsrType(sessionVO.getUsrType());
                 user.setDbObjListAddList(sessionVO.getDbObjList());
                 log.debug("[알람]["+sessionVO.getUserId()+"]의 접속성공\n");
                 flag = false;
+                break;
             }
         }
         if(flag){//기존 정보가 없는 경우 신규추가
@@ -77,84 +85,122 @@ public class SessionUtil {
         }
     }
     /** 
+     * 특정 사용자의 모든 새션종료
      * 접속 종료 후 동작하는 메서드이다. 사용자 유틸에 사용자정보를 제거한다.
-     * @param userId 사용자의 고유값
-     * @param objt DBVO의 고유값
+     * @param rowNum 사용자의 고유값
      */
-    public static void afterConnectionCloseDelSessionALL(String userId, long objt) {
-        for (SessionVO user : users) {
-            if(user.getUserId().equals(userId)){
-                log.debug("[알람]["+userId+"]의 접속종료 성공\n");
+    public static void disconnectionClosedALL(String rowNum) {
+        Iterator<SessionVO> itr = users.iterator(); 
+        SessionVO user =null;
+        while (itr.hasNext()) {
+            user = itr.next();
+            if(user.getRowNum().equals(rowNum)){
+                itr.remove();
+                log.debug("[알람]["+user.getUserId()+"]의 접속종료 성공\n");
+                return;
+            }
+        }
+        log.debug("[알람]["+rowNum+"]의 접속종료 실패\n");
+    }
+    /** 
+     * 특정 사용자의 특정 DB 세션만 종료한다.
+     * DB세션이 남아있지 않으면 모든세션을 종료한다.
+     * 접속 종료 후 동작하는 메서드이다. 사용자 유틸에 사용자정보를 제거한다.
+     * @param rowNum 사용자 고유값
+     * @param dbEnum DB 고유값 
+     */
+    public static void disconnectionClosed(String rowNum, String dbEnum) {
+        Iterator<SessionVO> itr = users.iterator();
+        SessionVO user=null;
+        while (itr.hasNext()) {
+            user = itr.next();
+            if(user.getRowNum().equals(rowNum)){
+                int count = user.getDBObjtCount();
+                String userName =user.getUserId();
+                if(1<count){
+                    if(!user.delDBObjt(dbEnum)){
+                        log.debug("[알람]["+userName+"]의 접속종료 실패\n");
+                        return;
+                    }
+                }else{//DB 1 개이하일 떄
+                    itr.remove();
+                }
+                log.debug("[알람]["+userName+"]의 접속종료 성공\n");
                 return;
             }
         }
     }
-    /** 
-     * 접속 종료 후 동작하는 메서드이다. 사용자 유틸에 사용자정보를 제거한다.
-     * @param userId 사용자의 고유값
-     */
-    public static void afterConnectionClosed(String userId) {
-        for (SessionVO user : users) {
-            if(user.getUserId().equals(userId)){//해당 아이디의 모든 세션 종료
-                users.remove(user);
-                log.debug("[알람]["+userId+"]의 접속종료 성공\n");
-            }
-        }
-    }
+    
     /**
      * 특정 사용자의 모든 세션정보
-     * @param userId 사용자 고유값
-     * @return ArrayList<SessionVO> 사용자의 모든 세션
+     * @param rowNum 사용자 고유값
+     * @return SessionVO 사용자의 모든 세션
      */
-    public ArrayList<SessionVO> getSessionALL(String userId) {
-        ArrayList<SessionVO> result = new ArrayList<SessionVO>();
+    public SessionVO getSession(String rowNum) {
         for (SessionVO user : users) {
-            if(user.getUserId().equals(userId)){//해당 아이디의 모든 세션 검색
-                result.add(user);
+            if(rowNum.equals(user.getRowNum())){
+                return user;
             }
         }
-        return result;
+        return null;
     }
     /**
-     * 특정 사용자의 특정한 DB 세션정보
-     * @param userId 사용자 고유값
-     * @param accessId DB 고유값 
-     * @return SessionVO 사용자의 특정DB 세션
+     * 특정 사용자의 특정 DB 세션정보
+     * @param rowNum 사용자 고유값
+     * @param dbEnum DB 고유값 
+     * @return
      */
-    public ArrayList<SessionVO> getSession(String userId, String accessId) {
-        ArrayList<SessionVO> result = new ArrayList<SessionVO>();
+    public Object getSessionDBALL(String rowNum, String dbEnum) {
         for (SessionVO user : users) {
-            if(user.getUserId().equals(userId)&&user.getUserId().equals(accessId)){//해당 아이디의 특정 DB 세션 검색
-                result.add(user);
-                return result;
+            if(rowNum.equals(user.getRowNum())){
+                ArrayList<Object> temp =  user.getDbObjList();
+                if(temp == null)return null;
+                for (Object object : temp) {
+                    if(object instanceof OracleVO){
+                        OracleVO oraVO = (OracleVO) object;
+                        if(oraVO.getDbEnum().equals(dbEnum)){
+                            return object;
+                        }
+                    }else if(object instanceof MsSQLVO){
+                        MsSQLVO mssLVO = (MsSQLVO) object;
+                        if(mssLVO.getDbEnum().equals(dbEnum)){
+                            return object;
+                        }
+                    }else if(object instanceof MySQLVO){
+                        MySQLVO mysVO = (MySQLVO) object;
+                        if(mysVO.getDbEnum().equals(dbEnum)){
+                            return object;
+                        }
+                    }
+                }
+                break;
             }
         }
-        return result;       
+        return null;
     }
+
     /**
      * 특정 사용자의 세션정보 체크 :: 로그인 여부 확인
-     * @param userId 사용자 고유값
+     * @param rowNum 사용자 고유값
      * @return boolean 
      */
-    public boolean chkeSessionUSR(String userId) {
-        boolean result = true;
-        if(getSessionALL(userId).size()<1){
-            result=false;
+    public boolean chkeSessionUSR(String rowNum) {
+        if(getSession(rowNum)==null){
+            return false;
         }
-        return result;
+        return true;
     }
     /**
      * 특정 사용자의 특정 DB 세션정보 체크 :: 로그인 후 DB 접속 확인
-     * @param userId 사용자 고유값
-     * @param dbId DB 고유값 
+     * @param rowNum 사용자 고유값
+     * @param dbEnum DB 고유값 
      * @return boolean
      */
-    public boolean chkeSessionUSRDB(String userId, String dbId) {
-        boolean result = true;
-        if(getSession(userId,dbId).size()<1){
-            result=false;
+    public boolean chkeSessionUSRDB(String rowNum, String dbEnum) {
+        if(getSessionDBALL(rowNum,dbEnum)==null){
+            return false;
         }
-        return result;
+        return true;
     }
 
 }

@@ -22,10 +22,11 @@ import javafx.stage.Stage;
  *  
  */ 
 public class SqlLiteApp extends Application {
-
-    private LoginController buildController(Stage stage) {
-        return new LoginController(stage);
+    
+    public static void main(String[] args) {
+        launch(args);
     }
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../login/login.fxml"));
@@ -34,9 +35,9 @@ public class SqlLiteApp extends Application {
         stage.setScene(new Scene((Parent) loader.load()));
         stage.show();
     }
-     public static void main(String[] args) {
-        launch(args);
+
+    private LoginController buildController(Stage stage) {
+        return new LoginController(stage);
     }
-     
 
 }

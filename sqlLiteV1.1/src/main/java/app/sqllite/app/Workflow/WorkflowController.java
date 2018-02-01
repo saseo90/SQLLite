@@ -10,24 +10,25 @@ import javafx.stage.Stage;
 
 
 
-public class MainController {
-    public MainController(Stage stage) {
+public class WorkflowController {
+    public WorkflowController(Stage stage) {
         
     }
     @FXML private VBox pan;
     
     public void initialize() {
 //    public void initialize(URL location, ResourceBundle resources) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/MainPane.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/WorkflowPane.fxml"));
         Parent parent = null;        
         try {
-            parent = loader.load();
+            parent = (Parent) loader.load();
         } catch (Exception e) {
-            System.out.println("로그");
-        	System.out.println(e.getMessage());
+            e.printStackTrace();
+//            System.out.println("로그");
+//        	System.out.println(e.getMessage());
         }
 //         load 화면정보를 workTop에 append 한다.
-        if(pan.getChildren() != null){
+        if(pan.getChildren()!=null){
 //         이전에 자식을 가지고 있는경우 제거한다.
             pan.getChildren().clear();
         }

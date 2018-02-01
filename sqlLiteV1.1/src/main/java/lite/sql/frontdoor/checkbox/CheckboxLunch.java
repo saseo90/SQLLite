@@ -20,7 +20,7 @@ public class CheckboxLunch extends Application{
 		Parent root;
 		Scene scene;
 		try {
-			root = loader.load();
+			root = (Parent) loader.load();
 			scene = new Scene(root);
 			stage.setScene(scene);
 		} catch (Exception e) {

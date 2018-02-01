@@ -1,6 +1,11 @@
 package com.cmm.utility.impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import app.sqllite.database.msssql.service.impl.MsSQLVO;
+import app.sqllite.database.mysql.service.impl.MySQLVO;
+import app.sqllite.database.oracle.service.impl.OracleVO;
 
 /**
  * 
@@ -37,14 +42,52 @@ public class SessionVO extends UserInfo {
     }
     public void setDbObjListAddList(ArrayList<Object> dbObjtList) {
         initDBObjList();
-        for (Object dbObjt : dbObjtList) {
-            this.dbObjList.add(dbObjt);
-        }       
+        this.dbObjList.addAll(dbObjtList);
     }
     private void initDBObjList() {
         if(this.dbObjList==null){
             this.dbObjList = new ArrayList<Object>();
         }
     }
+    
+    public int getDBObjtCount() {
+        if(dbObjList==null){
+            return 0;
+        }else{
+            return dbObjList.size(); 
+        }
+    }
 
+    public Boolean delDBObjt(String dbEnum) {
+        Boolean result = true;
+        if(dbObjList==null){
+            return result;
+        }
+        Iterator<Object> itr = dbObjList.iterator();  
+        while (itr.hasNext()) {
+            Object user = itr.next();
+            if(user instanceof OracleVO){
+                OracleVO oraVO = (OracleVO) user;
+                if(oraVO.getDbEnum().equals(dbEnum)){
+                    itr.remove();
+                    return result;
+                }
+            }else if(user instanceof MsSQLVO){
+                MsSQLVO mssVO = (MsSQLVO) user;
+                if(mssVO.getDbEnum().equals(dbEnum)){
+                    itr.remove();
+                    return result;
+                }
+            }else if(user instanceof MySQLVO){
+                MySQLVO mysVO = (MySQLVO) user;
+                if(mysVO.getDbEnum().equals(dbEnum)){
+                    itr.remove();
+                    return result;
+                }
+            }
+        }
+        return false; 
+    }
+    
+    
 }

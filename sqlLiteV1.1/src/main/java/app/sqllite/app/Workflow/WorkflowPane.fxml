@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="workPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.sqllite.app.Workflow.MainPanController">
+<BorderPane fx:id="workPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.sqllite.app.Workflow.WorkflowPanController">
    <bottom>
       <VBox fx:id="downVbox" alignment="TOP_CENTER" maxHeight="40.0" maxWidth="1440.0" minHeight="40.0" minWidth="1440.0" prefHeight="40.0" prefWidth="1440.0" BorderPane.alignment="CENTER">
          <padding>
