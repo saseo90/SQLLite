@@ -23,5 +23,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/commons-dbutils-1.7.jar"/>
+	<classpathentry kind="lib" path="D:/jdk7/jre7/lib/jfxrt.jar"/>
+	<classpathentry kind="lib" path="D:/jdk7/jre7/lib/rt.jar"/>
+	<classpathentry kind="lib" path="D:/jdk7/jre7/lib/jfr.jar"/>
+	<classpathentry kind="lib" path="D:/jdk1.8.0_101/jre/lib/jfxswt.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
