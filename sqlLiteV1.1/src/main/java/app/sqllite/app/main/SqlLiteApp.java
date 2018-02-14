@@ -1,4 +1,6 @@
 package app.sqllite.app.main;
+import com.cmm.EasyStageUtil;
+
 import app.sqllite.app.login.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,15 +31,8 @@ public class SqlLiteApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../login/login.fxml"));
-        loader.setControllerFactory(t -> buildController(stage));
-        stage.setTitle("SQLLite V1.1");//윈도우창의 제목설정
-        stage.setScene(new Scene((Parent) loader.load()));
-        stage.show();
+        EasyStageUtil est = new EasyStageUtil();
+        est.easyLoginStage(stage);
+        
     }
-
-    private LoginController buildController(Stage stage) {
-        return new LoginController(stage);
-    }
-
 }

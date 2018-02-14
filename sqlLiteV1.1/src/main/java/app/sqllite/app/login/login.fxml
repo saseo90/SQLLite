@@ -18,11 +18,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox fx:id="loginPane" prefHeight="554.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.sqllite.app.login.LoginController">
+<VBox fx:id="loginPane" minHeight="560.0" minWidth="400.0" prefHeight="560.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.sqllite.app.login.LoginController">
    <children>
-      <HBox prefHeight="463.0" prefWidth="652.0">
+      <HBox prefHeight="450.0" prefWidth="652.0">
          <children>
-            <Pane prefHeight="484.0" prefWidth="389.0">
+            <VBox prefHeight="450.0" prefWidth="389.0">
                <children>
                   <TableView fx:id="logTableView" prefHeight="455.0" prefWidth="389.0">
                     <columns>
@@ -32,49 +32,87 @@
                     </columns>
                   </TableView>
                </children>
-            </Pane>
-            <VBox prefHeight="480.0" prefWidth="264.0">
+            </VBox>
+            <VBox prefHeight="450.0" prefWidth="264.0">
                <children>
-                  <Pane prefHeight="347.0" prefWidth="264.0">
+                  <HBox prefHeight="300.0" prefWidth="264.0">
                      <children>
-                        <Text layoutX="24.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="아이디" wrappingWidth="62.12109375" />
-                        <TextField fx:id="logTxtId" layoutX="24.0" layoutY="28.0" prefHeight="23.0" prefWidth="227.0" />
-                        <Text layoutX="24.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호" wrappingWidth="62.12109375" />
-                        <Text fx:id="logsid" layoutX="24.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SID" wrappingWidth="62.12109375" />
-                        <PasswordField fx:id="logTxtPw" layoutX="24.0" layoutY="88.0" prefHeight="23.0" prefWidth="227.0" />
-                        <TextField fx:id="logTxtSdi" layoutX="24.0" layoutY="143.0" prefHeight="23.0" prefWidth="227.0" />
-                        <Text layoutX="24.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP" wrappingWidth="62.12109375" />
-                        <TextField fx:id="logTxtIp" layoutX="24.0" layoutY="194.0" prefHeight="23.0" prefWidth="227.0" />
-                        <TextField fx:id="logTxtPort" layoutX="24.0" layoutY="259.0" prefHeight="23.0" prefWidth="227.0" />
-                        <Text layoutX="24.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="포트번호" wrappingWidth="62.12109375" />
-                        <ComboBox fx:id="dbType" layoutX="24.0" layoutY="300.0" prefHeight="23.0" prefWidth="227.0" />
+                        <VBox alignment="BOTTOM_LEFT">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="아이디" wrappingWidth="62.12109375" />
+                              <TextField fx:id="logTxtId" prefHeight="25.0" prefWidth="227.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin></TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="비밀번호" wrappingWidth="62.12109375" />
+                              <PasswordField fx:id="logTxtPw" prefHeight="25.0" prefWidth="227.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin></PasswordField>
+                              <Text fx:id="logsid" strokeType="OUTSIDE" strokeWidth="0.0" text="SID" wrappingWidth="62.12109375" />
+                              <TextField fx:id="logTxtSdi" prefHeight="25.0" prefWidth="227.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin></TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IP" wrappingWidth="62.12109375" />
+                              <TextField fx:id="logTxtIp" prefHeight="25.0" prefWidth="227.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin></TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="포트번호" wrappingWidth="62.12109375" />
+                              <TextField fx:id="logTxtPort" prefHeight="25.0" prefWidth="227.0">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin></TextField>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DB종류" wrappingWidth="62.12109375" />
+                              <ComboBox fx:id="dbType" prefHeight="25.0" prefWidth="227.0" />
+                           </children>
+                        </VBox>
                      </children>
-                  </Pane>
-                  <Pane prefHeight="57.0" prefWidth="264.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="264.0">
                      <children>
-                        <Button fx:id="logBtnCnt" layoutX="23.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="93.0" text="Connect" />
-                        <Button fx:id="logBtnTest" layoutX="147.0" layoutY="10.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="93.0" text="Test" />
+                        <Button fx:id="logBtnCnt" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="37.0" prefWidth="93.0" text="Connect">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="logBtnTest" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="93.0" text="Test">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Button>
                      </children>
-                     <VBox.margin>
+                     <opaqueInsets>
                         <Insets />
-                     </VBox.margin>
-                  </Pane>
-                  <Pane prefHeight="51.0" prefWidth="264.0">
+                     </opaqueInsets>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="264.0">
                      <children>
-                        <Button fx:id="logBtnNew" layoutX="22.0" layoutY="8.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="NewID" />
-                        <Button fx:id="logBtnMod" layoutX="103.0" layoutY="8.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Modify" />
-                        <Button fx:id="logBtnDel" layoutX="178.0" layoutY="8.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Delete" />
+                        <Button fx:id="logBtnNew" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="NewID">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="logBtnMod" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Modify">
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="logBtnDel" mnemonicParsing="false" prefHeight="23.0" prefWidth="62.0" text="Delete" />
                      </children>
-                  </Pane>
+                  </HBox>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </VBox>
          </children>
       </HBox>
-      <Pane prefHeight="108.0" prefWidth="652.0">
+      <HBox prefHeight="110.0" prefWidth="652.0">
          <children>
-            <Label fx:id="logLblLogin" alignment="TOP_LEFT" layoutY="-1.0" prefHeight="94.0" prefWidth="518.0" text="" wrapText="true" />
-            <Button fx:id="logBtnClose" layoutX="521.0" layoutY="2.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="117.0" text="Close" />
+            <Label fx:id="logLblLogin" alignment="TOP_LEFT" prefHeight="94.0" prefWidth="518.0" text="" wrapText="true" />
+            <Button fx:id="logBtnClose" mnemonicParsing="false" prefHeight="37.0" prefWidth="117.0" text="Close" />
          </children>
-      </Pane>
+      </HBox>
    </children>
 </VBox>

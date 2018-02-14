@@ -38,13 +38,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import lite.sql.backdoor.dao.DatabaseDao;
 import lite.sql.backdoor.dao.MysqlDaoImpl;
 import lite.sql.backdoor.dao.OracleDaoImpl;
 import lite.sql.frontdoor.loginPage.loginList.Connect;
 import lite.sql.frontdoor.loginPage.loginList.LoginList;
 import lite.sql.frontdoor.loginPage.loginList.LoginUser;
-
+import javafx.scene.control.Dialog;
 /**
  * 
  * 로그인화면 콘트롤러 구현 클래스  
@@ -65,9 +66,15 @@ public class LoginController {
     private static Logger log = LoggerFactory.getLogger(LoginController.class);
     
     private LoginService loginService = new LoginServiceImpl();
-
+    private Window stage = null;
+//    private Object stage = null;
     public LoginController(Stage stage) {
+        this.stage = stage;
         //stage.setOnCloseRequest(e -> model.close());
+    }
+    public LoginController(Dialog stage) {
+        this.stage = stage.getOwner();
+        //stage.setOnCloseRequest(e->stage.close());
     }
     
     /** VBOX : 메인(로그인화면) 의 출력할 parents 다. */ 

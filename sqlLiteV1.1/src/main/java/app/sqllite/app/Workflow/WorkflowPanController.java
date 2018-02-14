@@ -90,7 +90,8 @@ public class WorkflowPanController {
      /** 접속자정보-접속드라이버 */@FXML private TextField textfieldAccessDriver;
 
      // 사이드 영역 시작
-     /** LEFT 영역의 버튼바 */@FXML private ToolBar sideToolbarMenu;
+     /** LEFT 영역의 버튼바 */
+     @FXML private ToolBar sideToolbarMenu;
      /** 버튼-DB 기본정보 초기화 */@FXML private Button btnSelectTables;
      /** 트리뷰-(조회)DB 기본정보   */@FXML private StackPane paneStack;
 
@@ -174,7 +175,7 @@ public class WorkflowPanController {
      private static File selectedSqlFile = null;
 
      @FXML
-     public void handleButtonAction(Event event) {
+     private void handleButtonAction(Event event) {
           try {
                Parent home_page_parent = FXMLLoader.load(getClass().getResource("/app/sqllite/app/login/login.fxml"));
                Scene home_page_scene = new Scene(home_page_parent);
