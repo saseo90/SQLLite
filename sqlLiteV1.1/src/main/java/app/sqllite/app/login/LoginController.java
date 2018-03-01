@@ -8,11 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import com.cmm.EasyStageUtil;
 import com.cmm.utility.impl.DefaultLoginVo;
-import com.cmm.utility.impl.SessionVO;
 
 import app.sqllite.app.login.service.LoginService;
 import app.sqllite.app.login.service.impl.LoginServiceImpl;
-import app.sqllite.app.main.SubIndext;
 import app.sqllite.database.msssql.service.impl.MsSQLVO;
 import app.sqllite.database.mysql.service.impl.MySQLVO;
 import app.sqllite.database.oracle.service.impl.OracleVO;
@@ -22,12 +20,9 @@ import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
@@ -40,13 +35,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import lite.sql.backdoor.dao.DatabaseDao;
-import lite.sql.backdoor.dao.MysqlDaoImpl;
-import lite.sql.backdoor.dao.OracleDaoImpl;
-import lite.sql.frontdoor.loginPage.loginList.Connect;
-import lite.sql.frontdoor.loginPage.loginList.LoginList;
 import lite.sql.frontdoor.loginPage.loginList.LoginUser;
-import javafx.scene.control.Dialog;
 /**
  * 
  * 로그인화면 콘트롤러 구현 클래스  
