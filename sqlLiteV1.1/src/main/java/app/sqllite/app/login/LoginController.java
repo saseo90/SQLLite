@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cmm.EasyStageUtil;
 import com.cmm.utility.impl.DefaultLoginVo;
 import com.cmm.utility.impl.SessionVO;
 
@@ -172,16 +173,9 @@ public class LoginController {
           result = loginService.connection(connVO);
         if (result.contains("[접속성공]")) {
            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/sqllite/app/Workflow/Workflow.fxml"));
-                SubIndext si = new SubIndext();
-                loader.setControllerFactory(t -> si.buildController(null));
-                Parent parent = (Parent) loader.load();
-                Scene scene = new Scene(parent);
-                Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                app_stage.hide();//현재 이벤트 를 실행중인 노드를 숨기고 화면을 전환하여 다시 출력한다.
-                app_stage.setScene(scene);
-                app_stage.show();
-                logLblLogin.setText(result);
+               EasyStageUtil esu = new EasyStageUtil();
+               esu.easyWorkStage();
+               logLblLogin.setText(result);
 //              logTxtId.clear();
 //              logTxtPw.clear();
 //              logTxtIp.clear();

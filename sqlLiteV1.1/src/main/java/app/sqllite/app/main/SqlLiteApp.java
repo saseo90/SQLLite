@@ -32,7 +32,7 @@ public class SqlLiteApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         EasyStageUtil est = new EasyStageUtil();
+        //est.easyLoginStage(stage);
         est.easyLoginStage(stage);
-        
     }
 }
